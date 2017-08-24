@@ -1,0 +1,50 @@
+<html>
+    <head></head>
+    <body>
+        <h1>maven的安装和配置</h1>
+        <h2>在window上安装maven</h2>
+        <p>首先要检查jdk的安装，jdk的版本务必高于1.4</p>
+        <p>接下来下载maven3，地址：http://maven.apache.org/download.html</p>
+        <p>本地安装：1.由于是免安装版本，所以直接解压缩放到指定的目录下即可。<br>
+           2.配置环境变量maven_home和修改path添加%maven_home%\bin </p>
+        <p>path环境变量的作用：当我们在命令行窗口输入命令时，系统会首先在当前目录中寻找可执行文件或者脚本。如果没有找到，系统会遍历环境变量path中定义的路径。</p>
+        <p>mvn -v</p>
+        <h2>安装目录分析</h2>
+        <h3>bin</h3>
+        <p>这里面主要包含了maven的脚本，执行命令时就是执行这些脚本。还有一个classworlds的配置文件m2.conf</p>
+        <h3>boot</h3>
+        <p>包含一个类加载器框架，maven使用该框架加载类库。不必关心。</p>
+        <h3>conf</h3>
+        <p>里面包含了至关重要的settings.xml文件。直接在此修改该文件会在该系统上全局的定义maven的行为。更好的方式是将该文件复制到~/.m2/目录下再进行修改。这样只能在用户层面定义
+            maven。
+        </p>
+        <h3>lib</h3>
+        <p>该目录包含了所有maven运行时需要的java类库。</p>
+        <h3>LICENSE</h3>
+        <p>记录了maven使用的软件许可证Apache License Version 2.0</p>
+        <h3>NOTICE</h3>
+        <p>记录了maven需要的第三方软件</p>
+        <h3>README</h3>
+        <p>maven简要介绍</p>
+        <h2>~/.m2</h2>
+        <p>由于刚安装maven时没有创建仓库，我们这里需要先执行一下maven的命令。然后在用户目录下可以看到.m2文件。在这个文件中有一个repository文件夹。这里就是
+            maven存放maven构件的地方。除此之外，我们可以将settings.xml文件复制到.m2目录下，这是最佳实践。
+        </p>
+        <h2>设置http代理</h2>
+        <p>如果无法直接访问互联网且没有内部仓库，maven是不可用的。如果公司限制了代理访问互联网，那么也需要为maven设置http代理。</p>
+        <h2>安装m2eclipse</h2>
+        <p>我使用的是eclipse-oxygen版本，打开eclipse->help->install new software打开如下图所示的窗口。</p>
+        <img src="maven10.png" />
+        <p>单击add按钮，会出现下图所示的页面，其中name为m2e，location为http://m2eclipse.sonatype.org/sites/m2e</p>
+        <img src="maven11.png" />
+        <p>点击确定之后，eclipse会下载m2eclipse安装站点上的资源信息，如下图所示：</p>
+        <img src="maven12.png" />
+        <p>然后一路next就ok了。上图中的maven integration for eclipse是m2eclipse的核心。</p>
+        <p>m2eclipse还提供了其他的组件，利于工具集成，安装地址为http://m2eclipse.sonatype.org/sites/m2e-extras</p>
+        <p>下面这张图，不解释</p>
+        <img src="maven13.png" />
+        <h2>最佳实践</h2>
+        <p>配置用户范围的settings.xml文件，maven目录下的该文件是全局范围的，不宜修改。可以将该文件复制到用户目录的.m2路径下进行修改。这样的影响范围是用户范围。</p>
+        <p>不要使用ide自带的maven</p>
+    </body>
+</html>
